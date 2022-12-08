@@ -23,20 +23,20 @@ You only need to produce the same array as expected result, no need to consider 
 possibility.
  */
 
-let myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
-const fixDate = (array) => {
-    /* provide your code here */
-    let sortedArray = [];
-    let len = array.length;
-    for (let i = 0; i < len; i++){
-        let repositionArray = array[i].split('-');
-        repositionArray.sort((a, b) => a - b);
-        sortedArray.push(`${repositionArray[1]}-${repositionArray[0]}-${repositionArray[2]}`);
-    }
-    return sortedArray
-}
-let newArr = fixDate(myArr)
-console.log(newArr)
+// let myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
+// const fixDate = (array) => {
+//     /* provide your code here */
+//     let sortedArray = [];
+//     let len = array.length;
+//     for (let i = 0; i < len; i++){
+//         let repositionArray = array[i].split('-');
+//         repositionArray.sort((a, b) => a - b);
+//         sortedArray.push(`${repositionArray[1]}-${repositionArray[0]}-${repositionArray[2]}`);
+//     }
+//     return sortedArray
+// }
+// let newArr = fixDate(myArr)
+// console.log(newArr)
 
 
 
@@ -44,13 +44,18 @@ console.log(newArr)
 // Write a counter funtion to print out in console the time difference between 2 given date
 // Expected result in the console: 11 days - 13 hours - 38 minutes - 20 seconds
 // */
-// const dateFrom = new Date(500000)
-// const dateTo = new Date(1000000000)
-// const counter = (from, to) => {
-//     /* provide your code here */
-// }
-// const timer = counter()
-// console.log(timer)
+const dateFrom = new Date(500000)
+const dateTo = new Date(1000000000)
+const counter = (from, to) => {
+    /* provide your code here */
+    from= dateFrom
+    to = dateTo
+    return ` ${to.getDate() - from.getDate()} days - ${to.getHours() - from.getHours()} hours - ${to.getMinutes() - from.getMinutes()} minutes  - ${to.getSeconds() - from.getSeconds()} seconds`;
+   
+}
+const timer = counter()
+console.log(timer)
+
 
 // /* 
 // 4. Check the url and read documentation: https://restcountries.com

@@ -3,34 +3,43 @@
 from 0 to 100
  */
 
-const printNum = () => {
-    for (let i = 0; i <= 100; i++) {
-        setTimeout(() => console.log(i), 1000);
-    }
-}
-console.log(printNum())
-
-
-
-// /*
-// 2. Given the array below:
-// myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
-// the array above has serveral dates, written in order month-day-year
-// Write the code inside function fixDate(array) below to transform the array to new
-// format dates day-month-year
-// expected result: ['24-12-2014', '23-09-2022', '30-12-2021', '08-02-2021', '15-07-2018', '14-12-2019', '14-12-2022'] . 
-// You only need to produce the same array as expected result, no need to consider other 
-// possibility.
-//  */
-
-// let myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
-// const fixDate = (array) => {
-//     /* provide your code here */
+// const printNum = () => {
+//     for (let i = 0; i <= 100; i++) {
+//         setTimeout(() => console.log(i), 1000);
+//     }
 // }
-// let newArr = fixDate(myArr)
-// console.log(newArr)
+// console.log(printNum())
 
-// /*
+
+
+/*
+2. Given the array below:
+myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
+the array above has serveral dates, written in order month-day-year
+Write the code inside function fixDate(array) below to transform the array to new
+format dates day-month-year
+expected result: ['24-12-2014', '23-09-2022', '30-12-2021', '08-02-2021', '15-07-2018', '14-12-2019', '14-12-2022'] . 
+You only need to produce the same array as expected result, no need to consider other 
+possibility.
+ */
+
+let myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
+const fixDate = (array) => {
+    /* provide your code here */
+    let sortedArray = [];
+    let len = array.length;
+    for (let i = 0; i < len; i++){
+        let repositionArray = array[i].split('-');
+        repositionArray.sort((a, b) => a - b);
+        sortedArray.push(`${repositionArray[1]}-${repositionArray[0]}-${repositionArray[2]}`);
+    }
+    return sortedArray
+}
+let newArr = fixDate(myArr)
+console.log(newArr)
+
+
+
 // 3. Counter function
 // Write a counter funtion to print out in console the time difference between 2 given date
 // Expected result in the console: 11 days - 13 hours - 38 minutes - 20 seconds

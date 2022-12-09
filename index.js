@@ -64,9 +64,43 @@ console.log(timer)
 // The data fetched from url should be displayed in index.html.
 // */
 
-// const getAllCountries = () => {
-//     /* provide your code here */
-// }
+const getAllCountries = () => {
+    const url = "https://restcountries.com/v3.1/all";
+    let countriesList = [];
+    fetch(url)
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            data.map((res) => {
+                countriesList.push(
+                    `
+                        <div class="countries">
+                            <div>
+                                <h2 class="country">${res.name.common}</h2>
+                                <p>${res.capital}</p>
+                                <p>${res.population}</p>
+                            </div>
+                            <div>
+                                <img src = '${res.flags.png}' >
+                            </div>
+                        </div>
+                    `
+                
+                );
+            }
+        );
+        countriesList.sort();
+        for (var i = 0; i < countriesList.length; i++) {
+          document.getElementById(
+            "container"
+          ).innerHTML += 
+              `<div class="border">${countriesList[i]}</div>`;
+        }
+      });
+}
+
+getAllCountries(); //
 
 // const getSingleCountry = () => {
 //     /* provide your code here */
@@ -117,3 +151,7 @@ console.log(timer)
 
 // const book1 = new Book("The Power of Habits", 14, 0.3)
 // const book2 = new TaxableBook("The Power of Habits", 14, 0.3, 24)
+
+let names  = ["John Doe", "Alex Doe", "Peter Doe", "Elon Doe"];
+let sortedNames = names.sort();
+console.log(sortedNames);

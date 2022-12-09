@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/css/styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -13,6 +13,29 @@
         * use grid to display all the countries fetched from the given url
         * no extra library, only vanilla CSS or SASS. Be creative in your own layout
      -->
-    <script src="index.js"></script>
+    <header>
+        <h1 id="title"></h1>
+        <p id="result"></p>
+    </header>
+    <main>
+        <div class="container">
+            <input type="text" class="country-input" id="country-input">
+            <div id="container"></div>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+    <!-- <input
+      id="getSingleCountry"
+      type="text"
+      value=""
+      placeholder="country name"
+    />
+    <button onclick="getSingleCountry()">Get country</button>
+    <h4>Country name:</h4>
+    <h5 id="getCountry"></h5>
+
+    <div id="country"></div> -->
+
+    <!-- <script src="./src/index.js"></script> -->
 </body>
 </html>

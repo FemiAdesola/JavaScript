@@ -76,37 +76,62 @@ const getAllCountries = () => {
                 countriesList.push(
                     `
                         <div class="countries">
-                            <div>
+                            <div class="grid">
                                 <h2 class="country">${res.name.common}</h2>
+                                 <img src = '${res.flags.png}' >
                                 <p>${res.capital}</p>
                                 <p>${res.population}</p>
-                            </div>
-                            <div>
-                                <img src = '${res.flags.png}' >
                             </div>
                         </div>
                     `
                 
                 );
+            });
+            countriesList.sort();
+                for (var i = 0; i < countriesList.length; i++) {
+                document.getElementById(
+                    "container"
+                ).innerHTML += 
+                    `<div class="border">${countriesList[i]}</div>`;
             }
-        );
-        countriesList.sort();
-        for (var i = 0; i < countriesList.length; i++) {
-          document.getElementById(
-            "container"
-          ).innerHTML += 
-              `<div class="border">${countriesList[i]}</div>`;
-        }
-      });
+        })
+        .catch(error => {
+            console.log(error)
+        });
 }
 
 getAllCountries(); //
 
-// const getSingleCountry = () => {
-//     /* provide your code here */
-// }
+const getSingleCountry = () => {
+    const country = document.getElementById("country-input").value;
+    const url = `https://restcountries.com/v3.1/name/${country}`;
+        fetch(url)
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            data.map((res) =>{
+                document.getElementById("fetchSingleCountry").innerHTML = 
+                    `
+                        <div class="countries">
+                            <div>
+                                <h2 class="country">${res.name.common}</h2>
+                                <img src ='${res.flags.png}' alt="country flag"/>
+                                <p>Capital: ${res.capital}</p>
+                                <p>Population: ${res.population}</p>
+                                
+                            </div>
+                        </div>
+                    `
+                }
+            );
+        })
+        .catch(error => {
+            console.log(error)
+        });
+}
 
-// getAllCountries()
+getAllCountries()
 
 // /*
 // 5. Provide logic for function generateNewFolderName, which receive an array as argument. Everytime the function gets called,
@@ -152,6 +177,3 @@ getAllCountries(); //
 // const book1 = new Book("The Power of Habits", 14, 0.3)
 // const book2 = new TaxableBook("The Power of Habits", 14, 0.3, 24)
 
-let names  = ["John Doe", "Alex Doe", "Peter Doe", "Elon Doe"];
-let sortedNames = names.sort();
-console.log(sortedNames);

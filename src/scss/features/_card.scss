@@ -1,8 +1,9 @@
-img{
+ img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     float: right;
+    margin-top: -22%; 
 } 
 
  p, h2 { 
@@ -13,8 +14,10 @@ img{
 .countries {
     margin: 20px;
     box-shadow: 0 3px 5px 7px #c5bbbb, 0 6px 2px 0 ;
-    width: 350px;
-    border-radius: 5px; 
+    width: 300px;
+    border-radius: 5px;
+    
+    
 }
 
 .country h2{
@@ -25,3 +28,7 @@ img{
     background-color: aqua;
 }
 
+#container{
+display: grid;
+grid-template-columns: auto auto auto auto;
+}

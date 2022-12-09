@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/styles.css">
-    <title>Document</title>
+    <title>Countries List</title>
 </head>
 <body>
     <!-- Question 4 in index.js
@@ -13,29 +13,19 @@
         * use grid to display all the countries fetched from the given url
         * no extra library, only vanilla CSS or SASS. Be creative in your own layout
      -->
-    <header>
-        <h1 id="title"></h1>
-        <p id="result"></p>
-    </header>
     <main>
         <div class="container">
-            <input type="text" class="country-input" id="country-input">
+            <input type="text" 
+                class="country-input" 
+                id="country-input"  
+                placeholder="Type the name of your desire country here"
+            >
+            <button onclick="getSingleCountry()">Get Country</button>
+            <div id="fetchSingleCountry"></div>
             <div id="container"></div>
         </div>
     </main>
     <script src="./index.js"></script>
-    <!-- <input
-      id="getSingleCountry"
-      type="text"
-      value=""
-      placeholder="country name"
-    />
-    <button onclick="getSingleCountry()">Get country</button>
-    <h4>Country name:</h4>
-    <h5 id="getCountry"></h5>
-
-    <div id="country"></div> -->
-
-    <!-- <script src="./src/index.js"></script> -->
+    
 </body>
 </html>

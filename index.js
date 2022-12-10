@@ -133,23 +133,33 @@ const getSingleCountry = () => {
 
 getAllCountries()
 
-// /*
-// 5. Provide logic for function generateNewFolderName, which receive an array as argument. Everytime the function gets called,
-// it should check for folder name. If the folder named 'New Folder' does not exist, it should add the name 'New Folder' to array.
-// If folder 'New Folder' exists, it should add 'New Folder (1)' to array. If 'New Folder (1)' exists, it should add 'New Folder (2)'
-// to array, and so on.
-// */
+/*
+5. Provide logic for function generateNewFolderName, which receive an array as argument. Everytime the function gets called,
+it should check for folder name. If the folder named 'New Folder' does not exist, it should add the name 'New Folder' to array.
+If folder 'New Folder' exists, it should add 'New Folder (1)' to array. If 'New Folder (1)' exists, it should add 'New Folder (2)'
+to array, and so on.
+*/
 
-// const generateNewFolderName = (existingFolders) => {
-//     /*  provide your code here */
-// }
+const generateNewFolderName = (existingFolders) => {
+    /*  provide your code here */
 
-// let folder = []
-// generateNewFolderName(folder)
-// generateNewFolderName(folder)
-// generateNewFolderName(folder)
-// generateNewFolderName(folder)
-// console.log(folder); //expect to see ['New Folder', 'New Folder (1)', 'New Folder (2)', 'New Folder (3)']
+    const checkForNewFolder = `New Folder (${existingFolders.length})`;
+
+    existingFolders.length <= 0
+        ? existingFolders.push("New Folder")
+        : !existingFolders.includes(checkForNewFolder)
+            ? existingFolders.push(checkForNewFolder)
+            : 0
+
+
+}
+
+let folder = []
+generateNewFolderName(folder)
+generateNewFolderName(folder)
+generateNewFolderName(folder)
+generateNewFolderName(folder)
+console.log(folder); //expect to see ['New Folder', 'New Folder (1)', 'New Folder (2)', 'New Folder (3)']
 
 // /* 
 // 6. Complete class Book:

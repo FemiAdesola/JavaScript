@@ -174,16 +174,61 @@ console.log(folder); //expect to see ['New Folder', 'New Folder (1)', 'New Folde
 // - give the logic to calculate price with taxRate. For example: 
 // cost 14, profit 0.3 , tax 24% => expected price is 30.43
 // */
-// class Book {
-//     _title
-//     constructor(title, cost, profit) {
-//     }
-// }
+class Book {
+    _title
+    constructor(title, cost, profit) {
+        if (cost <= 0) {
+            throw new Error("cost less than zero");
+        }
+        if (profit <= 0 || profit >= 0.5) {
+            throw new Error("positive number > 0 and =< 0.5 is required");
+        }
+        if (title && title.length < 1) {
+            throw new Error("title shouldnot be empty");
+        }
+     
+        this._title = title;
+        this.cost = cost;
+        this.profit = profit;
+    }
+    
+    bookPrice() {
+        return this.cost/( 1- this.profit)
+    };
 
-// class TaxableBook {
-//     /* provide your code here */
-// }
+    bookProfit() {
+        return this.bookPrice() * this.profit;
+    };
 
-// const book1 = new Book("The Power of Habits", 14, 0.3)
-// const book2 = new TaxableBook("The Power of Habits", 14, 0.3, 24)
+    priceIncrement () { 
+        return this.bookPrice() + 1;
+    };
 
+    priceDecrement () { 
+        return this.bookPrice() - 1;
+    }
+
+}
+
+class TaxableBook extends Book{
+    /* provide your code here */
+    constructor(title, cost, profit, taxRate) {
+        super(title, cost, profit);
+        this.taxRate = taxRate;
+    };
+
+    priceWithTaxRate() {
+        return this.cost / (1 - this.profit - this.taxRate / 100);
+    }
+}
+
+const book1 = new Book("The Power of Habits", 14, 0.3)
+const book2 = new TaxableBook("The Power of Habits", 14, 0.3, 24)
+
+console.log(book1.bookPrice())
+console.log(book2.bookPrice())
+
+console.log(book1.bookProfit())
+console.log(book2.bookProfit())
+
+console.log(book2.priceWithTaxRate().toFixed(2))

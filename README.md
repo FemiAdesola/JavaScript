@@ -67,11 +67,12 @@
 
 - The fourth task is based on the method in javascript and how to fetch data from REST API.
 
-![Task](/img/Task4.png)
+![Task4](/img/Task4.png)
 
 - Users can search for any country by typing the name of the desired country and clicking on get country. The result will display under the search input menu.
 
-![Task4B](/img/Task4B.png)
+![Task4b](/img/Task4B.png)
+
 
 - The sixth task is based on the class inheritance function, in which one class extends into another by creating new functionality on top of the existing class.
 

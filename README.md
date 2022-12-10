@@ -3,9 +3,9 @@
 ![](https://img.shields.io/static/v1?label=HTML&message=v.5&color=red)
 ![](https://img.shields.io/static/v1?label=CSS&message=v.3&color=blue)
 ![](https://img.shields.io/static/v1?label=SCSS&message=v.1.56&color=blue)
-![](https://img.shields.io/static/v1?label=JavaScript&message=v.1.56&color=yellow)
+![](https://img.shields.io/static/v1?label=JavaScript&message=ES6&color=yellow)
 
-
+- Click [here](https://femi-adesola-javscript.netlify.app/) to get link for task 6
 ## Table of content
 
 - [Technologies](#technologies)

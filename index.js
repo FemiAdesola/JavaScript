@@ -3,12 +3,12 @@
 from 0 to 100
  */
 
-// const printNum = () => {
-//     for (let i = 0; i <= 100; i++) {
-//         setTimeout(() => console.log(i), 1000);
-//     }
-// }
-// console.log(printNum())
+const printNum = () => {
+    for (let i = 0; i <= 100; i++) {
+        setTimeout(() => console.log(i), 1000);
+    }
+}
+console.log(printNum())
 
 
 
@@ -23,20 +23,20 @@ You only need to produce the same array as expected result, no need to consider 
 possibility.
  */
 
-// let myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
-// const fixDate = (array) => {
-//     /* provide your code here */
-//     let sortedArray = [];
-//     let len = array.length;
-//     for (let i = 0; i < len; i++){
-//         let repositionArray = array[i].split('-');
-//         repositionArray.sort((a, b) => a - b);
-//         sortedArray.push(`${repositionArray[1]}-${repositionArray[0]}-${repositionArray[2]}`);
-//     }
-//     return sortedArray
-// }
-// let newArr = fixDate(myArr)
-// console.log(newArr)
+let myArr = ['12-24-2014', '09-2022-23', '12-30-2021', '08-02-2021', '07-15-2018', '2019-12-14', '2022-14-12']
+const fixDate = (array) => {
+    /* provide your code here */
+    let sortedArray = [];
+    const len = array.length;
+    for (let i = 0; i < len; i++){
+        let repositionArray = array[i].split('-');
+        repositionArray.sort((a, b) => a - b);
+        sortedArray.push(`${repositionArray[1]}-${repositionArray[0]}-${repositionArray[2]}`);
+    }
+    return sortedArray
+}
+let newArr = fixDate(myArr)
+console.log(newArr)
 
 
 
@@ -79,8 +79,8 @@ const getAllCountries = () => {
                             <div class="grid">
                                 <h2 class="country">${res.name.common}</h2>
                                  <img src = '${res.flags.png}' >
-                                <p>${res.capital}</p>
-                                <p>${res.population}</p>
+                                <p>Capital: ${res.capital}</p>
+                                <p>Population: ${(res.population)}</p>
                             </div>
                         </div>
                     `

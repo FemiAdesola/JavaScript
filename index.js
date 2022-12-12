@@ -80,7 +80,7 @@ const getAllCountries = () => {
                                 <h2 class="country">${res.name.common}</h2>
                                  <img src = '${res.flags.png}' >
                                 <p>Capital: ${res.capital}</p>
-                                <p>Population: ${(res.population)}</p>
+                                <p>Population: ${(res.population).toLocaleString('en-US')}</p>
                             </div>
                         </div>
                     `
@@ -118,7 +118,7 @@ const getSingleCountry = () => {
                                 <h2 class="country">${res.name.common}</h2>
                                 <img src ='${res.flags.png}' alt="country flag"/>
                                 <p>Capital: ${res.capital}</p>
-                                <p>Population: ${res.population}</p>
+                                <p>Population: ${(res.population).toLocaleString('en-US')}</p>
                                 
                             </div>
                         </div>

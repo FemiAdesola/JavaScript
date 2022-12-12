@@ -239,3 +239,5 @@ console.log(book1.bookProfit())
 console.log(book2.bookProfit())
 
 console.log(book2.priceWithTaxRate().toFixed(2))
+
+// some ideas was found here: https://www.javascripttutorial.net/javascript-private-methods/

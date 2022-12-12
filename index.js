@@ -48,7 +48,7 @@ const dateFrom = new Date(500000)
 const dateTo = new Date(1000000000)
 const counter = (from, to) => {
     /* provide your code here */
-    from= dateFrom
+    from = dateFrom
     to = dateTo
     return ` ${to.getDate() - from.getDate()} days - ${to.getHours() - from.getHours()} hours - ${to.getMinutes() - from.getMinutes()} minutes  - ${to.getSeconds() - from.getSeconds()} seconds`;
    
@@ -176,6 +176,8 @@ console.log(folder); //expect to see ['New Folder', 'New Folder (1)', 'New Folde
 // */
 class Book {
     _title
+    #cost;
+    #profit;
     constructor(title, cost, profit) {
         if (cost <= 0) {
             throw new Error("cost less than zero");
@@ -188,16 +190,16 @@ class Book {
         }
      
         this._title = title;
-        this.cost = cost;
-        this.profit = profit;
+        this.#cost = cost;
+        this.#profit = profit;
     }
     
-    bookPrice() {
-        return this.cost/( 1- this.profit)
+    bookPrice(format = true) {
+        return format ? this.#cost / (1 - this.#profit) : 0;
     };
 
-    bookProfit() {
-        return this.bookPrice() * this.profit;
+    bookProfit(format = true) {
+        return format ? this.bookPrice() * this.#profit : 0;
     };
 
     priceIncrement () { 
@@ -212,13 +214,18 @@ class Book {
 
 class TaxableBook extends Book{
     /* provide your code here */
+    #taxRate;
+    #cost;
+    #profit;
     constructor(title, cost, profit, taxRate) {
-        super(title, cost, profit);
-        this.taxRate = taxRate;
+        super();
+        this.#taxRate = taxRate;
+        this.#cost = cost;
+        this.#profit = profit;
     };
 
     priceWithTaxRate() {
-        return this.cost / (1 - this.profit - this.taxRate / 100);
+        return this.#cost / (1 - this.#profit - this.#taxRate / 100);
     }
 }
 

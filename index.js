@@ -104,7 +104,7 @@ getAllCountries(); //
 
 const getSingleCountry = () => {
     const country = document.getElementById("country-input").value;
-    const url = `https://restcountries.com/v3.1/name/${country}`;
+    const url = `https://restcountries.com/v3.1/name/${country}?fullText=true`;
         fetch(url)
         .then((res) => {
             return res.json();
@@ -113,7 +113,7 @@ const getSingleCountry = () => {
             data.map((res) =>{
                 document.getElementById("fetchSingleCountry").innerHTML = 
                     `
-                        <div class="countries">
+                        <div class="countries-single">
                             <div>
                                 <h2 class="country">${res.name.common}</h2>
                                 <img src ='${res.flags.png}' alt="country flag"/>
@@ -206,8 +206,12 @@ class Book {
         return this.bookPrice() + 1;
     };
 
-    priceDecrement () { 
-        return this.bookPrice() - 1;
+    priceDecrement() { 
+        if (this.bookPrice() !==0) { 
+            return this.bookPrice() - 1;
+        } else {
+             throw new Error("price should be less than 1");
+        }
     }
 
 }
@@ -218,7 +222,7 @@ class TaxableBook extends Book{
     #cost;
     #profit;
     constructor(title, cost, profit, taxRate) {
-        super();
+        super(title, cost, profit, taxRate);
         this.#taxRate = taxRate;
         this.#cost = cost;
         this.#profit = profit;

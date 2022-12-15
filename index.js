@@ -109,10 +109,13 @@ const getSingleCountry = () => {
         .then((res) => {
             return res.json();
         })
-        .then((data) => {
-            data.map((res) =>{
-                document.getElementById("fetchSingleCountry").innerHTML = 
-                    `
+            .then((data) => {
+                if (data.message) {
+                   document.getElementById("fetchSingleCountry").innerHTML =`<p class="error">${data.message}</p>`
+                } else {
+                    data.map((res) => {
+                        document.getElementById("fetchSingleCountry").innerHTML =
+                            `
                         <div class="countries-single">
                             <div>
                                 <h2 class="country">${res.name.common}</h2>
@@ -123,8 +126,9 @@ const getSingleCountry = () => {
                             </div>
                         </div>
                     `
+                    }
+                    );
                 }
-            );
         })
         .catch(error => {
             console.log(error)
@@ -175,7 +179,7 @@ console.log(folder); //expect to see ['New Folder', 'New Folder (1)', 'New Folde
 // cost 14, profit 0.3 , tax 24% => expected price is 30.43
 // */
 class Book {
-    _title
+    #title
     #cost;
     #profit;
     constructor(title, cost, profit) {
@@ -189,21 +193,31 @@ class Book {
             throw new Error("title shouldnot be empty");
         }
      
-        this._title = title;
+        this.#title = title;
         this.#cost = cost;
         this.#profit = profit;
     }
     
-    bookPrice(format = true) {
-        return format ? this.#cost / (1 - this.#profit) : 0;
+    get getTitle() {return this.#title;}
+    get getCost() { return this.#cost; }
+    get getProfit() { return this.#profit; }
+
+ 
+
+    bookPrice() {
+        return this.#cost / (1 - this.#profit);
     };
 
-    bookProfit(format = true) {
-        return format ? this.bookPrice() * this.#profit : 0;
+    bookProfit() {
+        return this.bookPrice() * this.#profit ;
     };
 
     priceIncrement () { 
-        return this.bookPrice() + 1;
+       if (this.#cost + amount <= 0) {
+            throw new Error("Price must be greater than 0")
+        } else {
+            this.#cost += amount
+        }
     };
 
     priceDecrement() { 
@@ -219,29 +233,30 @@ class Book {
 class TaxableBook extends Book{
     /* provide your code here */
     #taxRate;
-    #cost;
-    #profit;
+    // #cost;
+    // #profit;
     constructor(title, cost, profit, taxRate) {
-        super(title, cost, profit, taxRate);
-        this.#taxRate = taxRate;
-        this.#cost = cost;
-        this.#profit = profit;
-    };
+        super(title, cost, profit);
 
-    priceWithTaxRate() {
-        return this.#cost / (1 - this.#profit - this.#taxRate / 100);
+        if (taxRate <= 0 || taxRate + profit >= 1) {
+            throw new Error("Invalid data")
+        }
+        this.#taxRate = taxRate;
+        }
+
+    bookPrice() {
+        // return this.cost / (1 - this.profit - this.#taxRate / 100);
+         return this.getCost / (1 - this.getProfit - this.#taxRate);
     }
 }
 
 const book1 = new Book("The Power of Habits", 14, 0.3)
-const book2 = new TaxableBook("The Power of Habits", 14, 0.3, 24)
+const book2 = new TaxableBook("The Power of Habits", 14, 0.3, 0.24)
 
 console.log(book1.bookPrice())
-console.log(book2.bookPrice())
+console.log(book2.bookPrice().toFixed(2))
 
 console.log(book1.bookProfit())
-console.log(book2.bookProfit())
-
-console.log(book2.priceWithTaxRate().toFixed(2))
+console.log(book2.bookProfit().toFixed(2))
 
 // some ideas was found here: https://www.javascripttutorial.net/javascript-private-methods/
